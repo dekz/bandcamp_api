@@ -2,6 +2,7 @@ require 'bandcamp/band'
 require 'bandcamp/album'
 require 'bandcamp/track'
 require 'bandcamp/request'
+require 'bandcamp/discography'
 
 module Bandcamp
   class Getter
@@ -37,6 +38,11 @@ module Bandcamp
       else
         response.collect{|band_json| Band.new band_json}
       end
+    end
+
+    def discography band
+      response = @request.discography band
+      response.nil? ? nil : Discography.new(response)
     end
 
     def band name
