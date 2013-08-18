@@ -7,7 +7,6 @@ module Bandcamp
 
     def initialize disco_hash
       @disco_hash = disco_hash
-      p @disco_hash
       @albums = @disco_hash.map { |album| Album.new album }
     end
 
